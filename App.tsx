@@ -78,7 +78,7 @@ const App: React.FC = () => {
         <div className="relative mb-8 group">
           <div className="absolute inset-0 bg-pink-200 blur-2xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <img 
-            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIybTVqYWVnYmYyb3ZkZjZ6bW96cW9vbmF5bXVqamF3bzh3NmZpNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" 
+            src="/jarina.jpeg" 
             alt="Cute Valentine Cat" 
             className="w-36 h-36 mx-auto relative drop-shadow-lg transform transition-transform group-hover:scale-110"
           />

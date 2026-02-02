@@ -14,7 +14,7 @@ export const Celebration: React.FC = () => {
       <div className="relative mb-10 group">
         <div className="absolute inset-[-20px] bg-white rounded-full blur-3xl opacity-30 animate-pulse"></div>
         <img 
-          src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN5ZnR3bmUxeWVodWlydzFqYmZhc3Z3cXVyMHByMmd6bm42Z3lxZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ZubN39V00G6R0X9o6R/giphy.gif" 
+          src="/jarina.jpeg" 
           alt="Happy Celebration" 
           className="w-72 h-72 md:w-96 md:h-96 mx-auto rounded-[3rem] border-[12px] border-white shadow-[0_25px_60px_rgba(255,77,109,0.5)] transform hover:rotate-3 transition-transform"
         />
