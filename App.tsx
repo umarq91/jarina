@@ -33,20 +33,25 @@ const App: React.FC = () => {
     setAccepted(true);
   };
 
-  const moveNoButton = () => {
-    if (!containerRef.current) return;
+ const moveNoButton = () => {
+  if (!containerRef.current) return;
 
-    const container = containerRef.current.getBoundingClientRect();
-    const padding = 80;
-    
-    // Calculate new random position within the container bounds
-    const newX = (Math.random() - 0.5) * (container.width - padding);
-    const newY = (Math.random() - 0.5) * (container.height - padding);
+  const container = containerRef.current.getBoundingClientRect();
+  const buttonWidth = 140;
+  const buttonHeight = 50;
+  const padding = 20;
 
-    setNoButtonPos({ x: newX, y: newY });
-    setNoTextIndex((prev) => (prev + 1) % NO_PHRASES.length);
-    setMoveCount((prev) => prev + 1);
-  };
+  const maxX = container.width / 2 - buttonWidth - padding;
+  const maxY = container.height / 2 - buttonHeight - padding;
+
+  const newX = Math.random() * maxX * 2 - maxX;
+  const newY = Math.random() * maxY * 2 - maxY;
+
+  setNoButtonPos({ x: newX, y: newY });
+  setNoTextIndex((prev) => (prev + 1) % NO_PHRASES.length);
+  setMoveCount((prev) => prev + 1);
+};
+
 
   if (accepted) {
     return (
@@ -102,17 +107,37 @@ const App: React.FC = () => {
           </button>
 
           {/* NO BUTTON */}
-          <button
-            onMouseEnter={moveNoButton}
-            onClick={moveNoButton}
-            style={{
-              transform: `translate(${noButtonPos.x}px, ${noButtonPos.y}px)`,
-              transition: moveCount > 0 ? 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none'
-            }}
-            className="bg-white/80 border-2 border-pink-100 text-pink-400 font-bold py-3 px-8 rounded-full shadow-md text-lg whitespace-nowrap absolute sm:relative hover:border-pink-300 transition-colors"
-          >
-            {NO_PHRASES[noTextIndex]}
-          </button>
+       <button
+  onMouseEnter={moveNoButton}     // desktop hover
+  onClick={moveNoButton}          // desktop click
+  onTouchStart={moveNoButton}     // 📱 mobile touch
+  style={{
+    transform: `translate(${noButtonPos.x}px, ${noButtonPos.y}px)`,
+    transition:
+      moveCount > 0
+        ? 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)'
+        : 'none',
+  }}
+  className="
+    absolute
+    bg-white/80
+    border-2 border-pink-100
+    text-pink-400
+    font-bold
+    py-3 px-8
+    rounded-full
+    shadow-md
+    text-lg
+    whitespace-nowrap
+    hover:border-pink-300
+    transition-colors
+    z-10
+    select-none
+  "
+>
+  {NO_PHRASES[noTextIndex]}
+</button>
+
         </div>
         
         <div className="mt-8 text-pink-300 text-sm font-medium animate-pulse">
